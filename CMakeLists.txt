@@ -21,9 +21,15 @@ include_directories(
 add_executable(
   asteroids
   ${CMAKE_SOURCE_DIR}/asteroids.cpp
+  ${CMAKE_SOURCE_DIR}/src/Game.cpp
   )
 
 target_include_directories(
   asteroids PRIVATE
   ${CMAKE_SOURCE_DIR}/src
+  )
+
+target_link_libraries(
+  asteroids
+  ${SDL2_LIBRARIES}
   )
