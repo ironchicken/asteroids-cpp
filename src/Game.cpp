@@ -23,3 +23,23 @@ bool Game::initialize() {
 
     return true;
 }
+
+void Game::shutDown() {
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(window);
+    SDL_Quit();
+}
+
+void Game::run() {
+    while (isRunning) {
+        processInput();
+        update();
+        generateOutput();
+    }
+}
+
+void Game::processInput() { }
+
+void Game::update() { }
+
+void Game::generateOutput() { }
