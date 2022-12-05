@@ -22,6 +22,7 @@ add_executable(
   asteroids
   ${CMAKE_SOURCE_DIR}/asteroids.cpp
   ${CMAKE_SOURCE_DIR}/src/Vector2.hpp
+  ${CMAKE_SOURCE_DIR}/src/Component.cpp
   ${CMAKE_SOURCE_DIR}/src/Actor.cpp
   ${CMAKE_SOURCE_DIR}/src/Game.cpp
   )
