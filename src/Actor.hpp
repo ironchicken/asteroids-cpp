@@ -26,6 +26,8 @@ public:
     void addComponent(const std::shared_ptr<Component> component);
     void removeComponent(const std::shared_ptr<Component> component);
 
+    State getState() const { return state; }
+
 private:
     State state;
     Vector2 position;
