@@ -21,6 +21,9 @@ bool Game::initialize() {
         return false;
     }
 
+    frameRate = 32;
+    ticksCount = 0;
+
     return true;
 }
 
@@ -40,6 +43,24 @@ void Game::run() {
 
 void Game::processInput() { }
 
-void Game::update() { }
+void Game::update() {
+    auto ticks = SDL_GetTicks();
+    if (ticks - ticksCount < frameRate) {
+        SDL_Delay(ticks - ticksCount);
+    }
+
+    ticks = SDL_GetTicks();
+
+    float deltaTime = (ticks - ticksCount) / 1000.0f;
+    if (deltaTime > 0.05f) {
+        deltaTime = 0.05f;
+    }
+
+    ticksCount = ticks;
+
+    if (!isRunning) {
+        return;
+    }
+}
 
 void Game::generateOutput() { }

@@ -21,6 +21,8 @@ private:
     int width;
     int height;
     bool isRunning;
+    int frameRate;
+    Uint32 ticksCount;
 };
 
 #endif
