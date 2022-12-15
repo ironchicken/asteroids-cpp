@@ -2,6 +2,7 @@
 #include <memory>
 #include "Actor.hpp"
 #include "Game.hpp"
+#include "SpriteComponent.hpp"
 #include "SDL_image.h"
 
 bool Game::initialize() {
@@ -134,4 +135,18 @@ SDL_Texture* Game::getTexture(const std::string& fileName) {
     }
 
     return texture;
+}
+
+void Game::addSprite(const std::shared_ptr<SpriteComponent> sprite) {
+    auto drawOrder = sprite->getDrawOrder();
+    auto spritesIt = sprites.begin();
+
+    while (spritesIt != sprites.end()) {
+        if (drawOrder < (*spritesIt)->getDrawOrder()) {
+            break;
+        }
+        spritesIt++;
+    }
+
+    sprites.insert(spritesIt, sprite);
 }
