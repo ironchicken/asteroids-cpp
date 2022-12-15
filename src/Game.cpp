@@ -103,3 +103,21 @@ void Game::update() {
 }
 
 void Game::generateOutput() { }
+
+SDL_Texture* Game::loadTexture(const std::string& fileName) {
+    SDL_Surface* surface = IMG_Load(fileName.c_str());
+    if (!surface) {
+        SDL_Log("Failed to load texture file %s", fileName.c_str());
+        return nullptr;
+    }
+
+    SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
+    SDL_FreeSurface(surface);
+
+    if (!texture) {
+        SDL_Log("Failed to convert surface to texture for %s", fileName.c_str());
+        return nullptr;
+    }
+
+    return texture;
+}
