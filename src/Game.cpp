@@ -121,3 +121,17 @@ SDL_Texture* Game::loadTexture(const std::string& fileName) {
 
     return texture;
 }
+
+SDL_Texture* Game::getTexture(const std::string& fileName) {
+    auto textureIt = textures.find(fileName);
+    if (textureIt != textures.end()) {
+        return (*textureIt).second;
+    }
+
+    auto texture = loadTexture(fileName);
+    if (texture != nullptr) {
+        textures.insert({ fileName, texture });
+    }
+
+    return texture;
+}

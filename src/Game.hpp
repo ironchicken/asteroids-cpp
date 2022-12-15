@@ -3,6 +3,7 @@
 
 #include <memory>
 #include <string>
+#include <unordered_map>
 #include <vector>
 #include "SDL2/SDL.h"
 
@@ -22,6 +23,7 @@ private:
     void addActor(const std::shared_ptr<Actor> actor);
     void removeActor(const std::shared_ptr<Actor> actor);
     SDL_Texture* loadTexture(const std::string& fileName);
+    SDL_Texture* getTexture(const std::string& fileName);
 
     SDL_Window* window;
     SDL_Renderer* renderer;
@@ -33,6 +35,7 @@ private:
     bool updatingActors;
     std::vector<std::shared_ptr<Actor>> actors;
     std::vector<std::shared_ptr<Actor>> pendingActors;
+    std::unordered_map<std::string, SDL_Texture*> textures;
 };
 
 #endif
