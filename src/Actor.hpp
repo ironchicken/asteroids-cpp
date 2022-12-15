@@ -27,6 +27,9 @@ public:
     void removeComponent(const std::shared_ptr<Component> component);
 
     State getState() const { return state; }
+    Vector2 getPosition() const { return position; }
+    float getScale() const { return scale; }
+    float getRotation() const { return rotation; }
 
 private:
     State state;
