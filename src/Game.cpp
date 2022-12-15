@@ -2,6 +2,7 @@
 #include <memory>
 #include "Actor.hpp"
 #include "Game.hpp"
+#include "SDL_image.h"
 
 bool Game::initialize() {
     auto initResult = SDL_Init(SDL_INIT_VIDEO);
@@ -9,6 +10,8 @@ bool Game::initialize() {
         SDL_Log("Failed to initialise SDL: %s", SDL_GetError());
         return false;
     }
+
+    IMG_Init(IMG_INIT_PNG);
 
     width = 1024;
     height = 768;
@@ -31,6 +34,7 @@ bool Game::initialize() {
 }
 
 void Game::shutDown() {
+    IMG_Quit();
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
